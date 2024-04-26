@@ -7,10 +7,10 @@
 DriveSubsystem drive;
 double left,right;
 
-DriveCommand::DriveCommand(DriveSubsystem* subystem, frc::Joystick* controller) : m_drive(subystem), m_driverController(controller) {
+DriveCommand::DriveCommand(DriveSubsystem* subystem, frc::Joystick* joystick) : m_drive(subystem), m_driverController(joystick) {
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(m_drive);
-  this->m_driverController = controller;
+  this->m_driverController = joystick;
 }
 
 // Called when the command is initially scheduled.

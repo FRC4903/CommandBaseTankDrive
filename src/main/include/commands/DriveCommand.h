@@ -23,7 +23,7 @@ class DriveCommand : public frc2::CommandHelper<frc2::Command, DriveCommand> {
 private:
     DriveSubsystem* m_drive; frc::Joystick* m_driverController;
 public:
-    DriveCommand(DriveSubsystem* DriveSubsystem , frc::Joystick* m_driverController); // Constructor declaration
+    DriveCommand(DriveSubsystem* m_driveSubsystem , frc::Joystick* m_joystick); // Constructor declaration
     void Initialize() override;
     void Execute() override;
     void End(bool interrupted) override;

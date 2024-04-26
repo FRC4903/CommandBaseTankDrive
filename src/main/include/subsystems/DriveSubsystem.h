@@ -11,6 +11,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
   DriveSubsystem();
   void set(double leftSpeed, double rightSpeed);
   void stop();
+  void InitDefaultCommand();
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
