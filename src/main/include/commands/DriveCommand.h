@@ -6,6 +6,9 @@
 
 #include <frc2/command/Command.h>
 #include <frc2/command/CommandHelper.h>
+#include <subsystems/DriveSubsystem.h>
+#include <commands/DriveCommand.h>
+#include <frc/Joystick.h>
 
 /**
  * An example command.
@@ -15,28 +18,14 @@
  * Command will *not* work!
  */
 // class DriveCommand
-//     : public frc2::CommandHelper<frc2::Command, DriveCommand> {
-//  public:
-//   DriveCommand();
 
-//   void Initialize() override;
-
-//   void Execute() override;
-
-//   void End(bool interrupted) override;
-
-//   bool IsFinished() override;
-// };
-
-class DriveSubsystem; // Forward declaration
-
-class DriveCommand {
+class DriveCommand : public frc2::CommandHelper<frc2::Command, DriveCommand> {
 private:
-    DriveSubsystem* m_drive;
+    DriveSubsystem* m_drive; frc::Joystick* m_driverController;
 public:
-    DriveCommand(DriveSubsystem* subsystem); // Constructor declaration
-    void Initialize();
-    void Execute();
-    void End(bool interrupted);
-    bool IsFinished();
+    DriveCommand(DriveSubsystem* DriveSubsystem , frc::Joystick* m_driverController); // Constructor declaration
+    void Initialize() override;
+    void Execute() override;
+    void End(bool interrupted) override;
+    bool IsFinished() override;
 };

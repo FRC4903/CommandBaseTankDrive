@@ -20,7 +20,8 @@
 class RobotContainer {
  public:
   RobotContainer();
-
+  DriveCommand* m_driveCommand; 
+  DriveSubsystem m_driveSubsystem;
   frc2::CommandPtr GetAutonomousCommand();
 
  private:

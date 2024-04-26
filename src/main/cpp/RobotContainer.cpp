@@ -8,12 +8,17 @@
 #include "subsystems/DriveSubsystem.h"
 #include "commands/Autos.h"
 #include "commands/ExampleCommand.h"
+#include <commands/DriveCommand.h>
+#include <frc/Joystick.h>
+#include <frc2/command/Command.h>
 
 RobotContainer::RobotContainer() {
   // Initialize all of your commands and subsystems here
-   DriveSubsystem DriveSubsystem();
+  
+   //m_driveSubsystem.SetDefaultCommand(m_driveCommand);
+  
   // Configure the button bindings
-  ConfigureBindings();
+  ConfigureBindings(); 
 }
 
 void RobotContainer::ConfigureBindings() {
@@ -28,6 +33,8 @@ void RobotContainer::ConfigureBindings() {
   // pressed, cancelling on release.
   m_driverController.B().WhileTrue(m_subsystem.ExampleMethodCommand());
 }
+
+
 
 frc2::CommandPtr RobotContainer::GetAutonomousCommand() {
   // An example command will be run in autonomous
