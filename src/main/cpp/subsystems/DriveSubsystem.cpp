@@ -9,25 +9,20 @@
 
 
  
-phoenix::motorcontrol::can::TalonFX leftFront{1};
-phoenix::motorcontrol::can::TalonFX leftBack{2};
-phoenix::motorcontrol::can::TalonFX rightFront{3};
-phoenix::motorcontrol::can::TalonFX rightBack{4};
+phoenix::motorcontrol::can::TalonFX left{1};
+// phoenix::motorcontrol::can::TalonFX leftBack{2};
+phoenix::motorcontrol::can::TalonFX right{3};
+// phoenix::motorcontrol::can::TalonFX rightBack{4};
 
 DriveSubsystem::DriveSubsystem() {
-    leftFront.ConfigFactoryDefault();
-    leftBack.ConfigFactoryDefault();
+    left.ConfigFactoryDefault();
 
-    rightFront.ConfigFactoryDefault();
-    rightFront.ConfigFactoryDefault();
-
-
-    leftBack.Follow(leftFront);
-    rightBack.Follow(rightFront); 
+    
+    right.ConfigFactoryDefault();
 
 
-    leftBack.SetInverted(true);
-    rightBack.SetInverted(false);
+    left.SetInverted(true);
+    right.SetInverted(false);
 
 }
 
@@ -36,15 +31,16 @@ DriveSubsystem::DriveSubsystem() {
 void DriveSubsystem::Periodic() {}
 
  void DriveSubsystem::set(double leftSpeed, double rightSpeed){
-leftFront.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, leftSpeed);
-rightFront.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, rightSpeed);
+left.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, leftSpeed);
+right.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, rightSpeed);
 
 std::cout << "Left speed: " << leftSpeed << ", Right speed: " << rightSpeed << std::endl;
+
 } 
 
 void DriveSubsystem::stop(){
-    leftBack.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,0);
-    rightBack.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,0);
+    left.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,0);
+    right.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,0);
     
 }
 
