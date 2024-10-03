@@ -6,6 +6,7 @@
 #include <ctre/Phoenix.h>
 #include "ctre/phoenix/motorcontrol/can/TalonFX.h"
 #include <iostream>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 
  
@@ -16,8 +17,6 @@ phoenix::motorcontrol::can::TalonFX right{3};
 
 DriveSubsystem::DriveSubsystem() {
     left.ConfigFactoryDefault();
-
-    
     right.ConfigFactoryDefault();
 
 
@@ -34,7 +33,8 @@ void DriveSubsystem::Periodic() {}
 left.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, leftSpeed);
 right.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, rightSpeed);
 
-std::cout << "Left speed: " << leftSpeed << ", Right speed: " << rightSpeed << std::endl;
+frc::SmartDashboard::PutNumber("leftSpeed", leftSpeed);
+frc::SmartDashboard::PutNumber("rightSpeed", rightSpeed);
 
 } 
 
