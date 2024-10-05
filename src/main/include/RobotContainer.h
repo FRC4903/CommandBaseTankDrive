@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <frc/Joystick.h>
 #include <frc2/command/CommandPtr.h>
 #include <frc2/command/button/CommandXboxController.h>
 #include <subsystems/DriveSubsystem.h>
@@ -22,7 +23,7 @@ class RobotContainer {
   RobotContainer();
     DriveSubsystem* m_driveSubsystem;
     DriveCommand* m_driveCommand;
-  frc2::CommandPtr GetAutonomousCommand();
+    frc::Joystick m_driveJoystick{0};
 
  private:
   // Replace with CommandPS4Controller or CommandJoystick if needed

@@ -5,8 +5,8 @@
 
 #include "RobotContainer.h"
 #include <frc2/command/button/Trigger.h>
-#include "subsystems/DriveSubsystem.h"
-
+#include <subsystems/DriveSubsystem.h>
+#include <frc2/command/RunCommand.h>
 #include <commands/DriveCommand.h>
 #include <frc/Joystick.h>
 #include <frc2/command/Command.h>
@@ -14,16 +14,20 @@
 RobotContainer::RobotContainer() {
   // Initialize all of your commands and subsystems here
   // Configure the button bindings
-  ConfigureBindings(); 
-}
+  m_driveSubsystem->SetDefaultCommand(frc2::RunCommand(  
+    [this]{
+        DriveCommand(m_driveSubsystem, &m_driveJoystick);
+         },{m_driveSubsystem}));
+
+     ConfigureBindings(); 
+  }
+
+ 
+
 
 void RobotContainer::ConfigureBindings() {
 }
 
 
 
-frc2::CommandPtr RobotContainer::GetAutonomousCommand() {
-  // An example command will be run in autonomous
-
-}
 
